@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <style>
+	    br {margin-bottom: 20px;}
+        .error {color: red; }
+        .error {display:inline-block;}
+	</style> 
+    <head>
+        <title>{{title}}</title>
+    </head>
+<body>
+    <div>
+        <a href="/newpost"> New Post </a>
+        <hr>
+        <a href="/blog"> Blog Main Page </a>
+
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+
+</body>
+</html>
