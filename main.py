@@ -38,11 +38,15 @@ def blog():
 def newpost():
 
     if request.method == 'POST':
+
         blog_title = request.form['blogTitle']
-        new_blog = Blog(blog_title)
         blog_body = request.form['blogBody']
+        new_blog = Blog(blog_title)
         blog_entry = Blog(blog_body)
-        
+        db.session.add(new_blog)
+        db.session.add(blog_entry)
+        db.session.commit()
+
         if blog_title == " " or blog_body == " ":
             title_error = "Successful Title"
             body_error = "Sucessful Body"
@@ -53,15 +57,12 @@ def newpost():
                 title_error= "Your blog is missing a title"
             elif body_body == " ":
                 body_error= "your blog is missing content"
-        return render_template('newpost.html, title_error = title_error, body_error = body_error')    
+        return render_template('newpost.html', title_error = title_error, body_error = body_error)    
         
     else:
 
-        db.session.add(new_blog)
-        db.session.add(blog_entry)
-        db.session.commit()
-
-        return redirect('/blog')
+       
+        return redirect('/newpost.html')
 
 
 @app.route('/delete-blog', methods=['POST'])
