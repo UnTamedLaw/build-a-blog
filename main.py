@@ -57,14 +57,13 @@ def newpost():
                 title_error= "Your blog is missing a title"
             elif body_body == " ":
                 body_error= "your blog is missing content"
-        return render_template('newpost.html', title_error = title_error, body_error = body_error)    
+            return render_template('newpost.html', title_error = title_error, body_error = body_error)    
         
     else:
 
-       
-        return redirect('/newpost.html')
+        return render_template('/newpost.html')
 
-
+    return render_template('newpost.html')
 @app.route('/delete-blog', methods=['POST'])
 def delete_blog():
 

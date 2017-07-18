@@ -3,7 +3,7 @@
 {% block content %}
  	
         <h1> Add a New Blog Entry </h1>
-		<form method='POST'>
+		<form action= '/newpost' method='POST'>
 	
 		<label> Blog Title
 			<input name="blogTitle" type = "text" value='{{blogTitle}}' />
