@@ -4,6 +4,8 @@
 	    br {margin-bottom: 20px;}
         .error {color: red; }
         .error {display:inline-block;}
+        .success {color: green; }
+        .success {display:inline-block;}
 	</style> 
     <head>
         <title>{{title}}</title>
@@ -13,8 +15,18 @@
         <a href="/newpost"> New Post </a>
         <hr>
         <a href="/blog"> Blog Main Page </a>
-
+        <hr>
+        <a href="/logout"> Log Out</a>
     </div>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+        {% for category, message in messages %}
+            <li class= "{{Category}}">{{message}}</li>
+        {% endfor %}
+        </ul>
+
+    {% endwith %}
 
     {% block content %}
     {% endblock %}
