@@ -48,7 +48,7 @@ def require_login():
 @app.route('/', methods=['POST', 'GET'])
 def index():
     
-    return redirect('/index')
+    return redirect('/blog')
 
 @app.route('/blog', methods =['POST', 'GET'])
 def blog():
@@ -126,7 +126,7 @@ def signup():
             flash('Sucessful registration', 'success')
             return redirect('/newpost')
 
-        elif username = '' or password = '' or verify = '':
+        elif username == '' or password == '' or verify == '':
             flash('One more fields are blank', 'error')
             
         elif existing_user:
@@ -164,7 +164,9 @@ def login():
 
 @app.route('/index')
 def home():
-    
+     
+    users = User.query.filter_by(username=username).first.all()
+    return render_template('index.html', users=users)
     
 
 @app.route('/logout')
