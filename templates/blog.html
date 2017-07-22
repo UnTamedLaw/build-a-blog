@@ -11,8 +11,11 @@
 
         <div>
             {% for blog in blogs %}
-            <h2><a href="/blog?id={{blog.id}}">{{blog.title}} </a></h2>
-
+            <h2>{{blog.title}} </h2>
+                <form method = 'POST' action='/delete-blog' style='display:inline-block;'>
+                    <input type='hidden' name = 'blog-id' value = '{{blog.id}}' />
+                    <input type='submit' value='Done!'>
+                </form>
             <p> {{blog.body}}</p>
             {% endfor %}
 
@@ -21,4 +24,10 @@
     {% endif %}
     <hr />
 
+    <h2> Deleted blogs </h2>
+    <ul> 
+        {% for blog in deletedBlogs %}
+        <li> {{blog.title}} </li>
+        {% endfor %}
+    </ul>   
 {% endblock %}
