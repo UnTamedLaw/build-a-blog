@@ -33,8 +33,8 @@ def index():
 def blog():
     if request.args:
         blog_id = request.args.get('id')
-        blog_id = Blog.query.get(blog.id)
-        return redirect('blogPage', blog=blog_id)
+        blog = Blog.query.get(blog_id)
+        return render_template('blogPage.html', blog=blog)
 
     total_blogs = Blog.query.filter_by(deleted=False).all()
     deleted_blogs = Blog.query.filter_by(deleted=True).all()
